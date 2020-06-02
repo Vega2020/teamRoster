@@ -99,7 +99,7 @@ The other three classes will extend `Employee`.
 
 In addition to `Employee`'s properties and methods, `Manager` will also have:
 
-  * officeNumber
+  * officeNumber (get office number function is missing from manager)
 
   * getRole() // Overridden to return 'Manager'
 
