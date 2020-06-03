@@ -19,7 +19,7 @@ const render = require("./lib/htmlRenderer");
 
 
 //empty array to push our employees to as we buid our roster
-const employeeRoster = [];
+const employees = [];
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -72,11 +72,22 @@ inquirer
             name: "id",
             message: "Enter the employee's ID number:"
         },
-    ]).then(function(user){
-        employeeRoster.push(user);
-        console.log(employeeRoster);
-        
-    });//closing bracket of .then code
+        {
+            name: "keepGoing",
+            type: "confirm",
+            message: "Enter another employee?",
+        }
+    ]).then(function(data){
+        employees.push(data);
+        console.log(employees);
+        if (data.keepGoing === true) {
+            data.keepGoing = null;
+            enterData();
+        } else {
+            data.keepGoing = null;
+            render(data);
+        };
+    });
 
 };//closing bracket of enterdata function
     

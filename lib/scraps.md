@@ -1,5 +1,45 @@
+### third another attempt at a function to repeat the input process
+    function checkRepeat() {
+        var keepGoing = confirm();
+        if (keepGoing) {
+            enterData();
+        } else {
+            return;
+        }
+    };
 
-//first attempt at instantiating employee (test 1), doesn't work
+### second attempt at using enquirer prompt to tell function whether to repeat
+    inquirer
+        .prompt({
+            type: 'confirm',
+            name: 'confirmed',
+            message: 'Do you want to enter another employee?',
+            default: false
+            }, function (reply) {
+                if (reply.confirmed) {
+                    enterData();
+                } else {
+                    return;
+                }
+            })
+
+
+### attempt at telling the function whether to repeat/when to render
+let repeat = inquirer.prompt({
+            name: "keepGoing",
+            type: "confirm",
+            message: "Keep entering data?"
+        });
+        if (repeat === true) {
+            enterData();
+        } else {
+            render(employeeRoster
+            )}; //closing bracket of if-else statement
+
+
+
+
+### first attempt at instantiating employee (test 1), doesn't work
 // class Employee {
 // inquirer
 //     .prompt([
