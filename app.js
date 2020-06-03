@@ -20,6 +20,10 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+//inquirer prompt to ask about each team member, with info from their class
+
+//STEP: create an array for the employees to go in?
+//STEP: write a for each that does the below to all the objects?
 inquirer
     .prompt([
         {
@@ -31,17 +35,40 @@ inquirer
             message: "Enter the employee's role:"
         },
         {
+            name: "github",
+            message: "Enter the employee's github:",
+            when: function(answers) {
+              return answers.role === "Engineer";
+            }
+        },
+        {
+            name: "officeNumber",
+            message: "Enter the employee's office number:",
+            when: function(answers) {
+              return answers.role === "Manager";
+            }
+        },
+        {
+            name: "school",
+            message: "Enter the employee's school:",
+            when: function(answers) {
+              return answers.role === "Intern";
+            }
+        },
+        {
             name: "email",
             message: "Enter the employee's email address:"
         },
         {
             name: "id",
             message: "Enter the employee's ID number:"
-        }
-    ]).then (
-}
+        },
+    ]).then(function(user){
+            console.log(user);
+        //we'll use if-else statements here to render the different function depending on the entered employee's role
+        
+    });
 
-//inquirer prompt to ask about each team member, with info from their class
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
