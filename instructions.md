@@ -78,7 +78,7 @@ app.js         // Runs the application
 
 * User can use the CLI to generate an HTML page that displays information about their team.
 
-* All tests must pass.
+* All tests must pass. (done)
 
 ### Classes
 The project must have the these classes: `Employee`, `Manager`, `Engineer`,

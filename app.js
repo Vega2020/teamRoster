@@ -14,6 +14,7 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
+
 //this is the javascript file in our other folder
 const render = require("./lib/htmlRenderer");
 
@@ -78,14 +79,24 @@ inquirer
             message: "Enter another employee?",
         }
     ]).then(function(data){
-        employees.push(data);
-        console.log(employees);
+        switch(data.role.type) {
+            case "Manager":
+                employees.push(new Manager(data));
+               break;
+            case "Intern":
+                employees.push(new Intern(data));
+                break;
+            case "Engineer":
+                employees.push(new Engineer(data));
+                break;
+        };
         if (data.keepGoing === true) {
             data.keepGoing = null;
             enterData();
         } else {
             data.keepGoing = null;
-            render(data);
+            render(employees);
+            //need to write fs function here to make it export to html.
         };
     });
 
