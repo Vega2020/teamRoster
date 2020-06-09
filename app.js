@@ -95,7 +95,11 @@ inquirer
             enterData();
         } else {
             data.keepGoing = null;
-            render(employees);
+            let output = render(employees);
+            fs.writeFile(__dirname + "/output/teamRoster.html", output, function (err) {
+                if (err) throw err;
+                console.log('success');
+            });
             //need to write fs function here to make it export to html.
         };
     });
